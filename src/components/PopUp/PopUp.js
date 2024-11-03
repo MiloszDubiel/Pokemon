@@ -8,7 +8,7 @@ const PopUp = ({ info }) => {
         <div className="popup-background hidden" >
             <div className="card h-100 shadow-sm position-relative"> 
                 <p>{info.name} {info.exp}</p>
-               <input type="button" className="form-control" onClick={()=>{
+               <input type="button" className="form-control" value="X" onClick={()=>{
                 document.querySelector('.popup-background').classList.toggle('hidden')
                }}/>
             </div>

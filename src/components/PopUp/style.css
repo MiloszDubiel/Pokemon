@@ -9,10 +9,11 @@
     justify-content: center;
     align-items: center;
     opacity: 100;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
 }
 .hidden{
     opacity: 0;
+    visibility: hidden;
 }
 .popup-background > .card{
     width: 500px !important;
@@ -24,7 +25,4 @@
     position: absolute;
     right: 0;
     margin: 5px;
-}
-.hidden{
-    display: none;
 }
