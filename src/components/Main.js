@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCards/PokemonCards";
 async function getPokemons() {
   let pokemons = []
   
-  for(let i = 1; i <= 50; i++){
+  for(let i = 1; i <= 52; i++){
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
     const data = await response.json()
     pokemons.push(data)
@@ -23,10 +23,11 @@ const Main = props => {
       response.then(data => {
         extractData = data
         const cards = data.map(element=>{
-          return <PokemonCard key={element.id} name={element.name} img={element.sprites.front_default} exp={element.base_experience}/>
+          return <PokemonCard key={element.id} name={element.name} img={element.sprites.front_default} exp={element.base_experience} weight={element.weight} height={element.height}/>
         })
         setExtractedData(extractData)
         setCardsOPokemons(cards)
+        console.log(extractData[0].height)
       })
 
     },[])
@@ -49,7 +50,7 @@ const Main = props => {
       <>
       {props.children}
       <div className="container py-5">
-        <h1 className="text-center mb-4">Pokédex</h1>
+        <h1 className="text-center mb-4">Pokemons</h1>
         <div className="row justify-content-center mb-4">
           <div className="col-md-6">
             <input onChange={ e => findPokemon(e) }

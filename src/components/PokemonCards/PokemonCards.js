@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { pokemonInfo } from "../../actions/pokemonInfo.action";
 
-const PokemonCard = ({name, img, exp, addInfo}) => {
+const PokemonCard = ({name, img, exp, weight, height, addInfo}) => {
 
     return(
     <>
@@ -11,20 +11,20 @@ const PokemonCard = ({name, img, exp, addInfo}) => {
                 <img src={img} className="card-img-top" alt={`${name} image`} />
                 <div className="card-body text-center">
                     <h5 className="card-title"><b>Name: </b>{name}</h5>
-                    <p className="card-text"><b>Experience: </b> {exp}
-                    </p>
-                    <input type="button" className="form-control"value="Show details" onClick={ ()=> {
+                </div>
+                <input type="button" className="form-control" style={{borderRadius: '5px 5px 4px 4px', borderBottom: 'none', borderLeft: 'none', borderRight: 'none'}} 
+                       value="Show details" 
+                       onClick={ ()=> {
                         document.querySelector('.popup-background').classList.toggle('hidden')
-                        addInfo(name, exp) 
+                        addInfo(name, exp, height, weight, img) 
                     }}
                     />
-                </div>
             </div>
         </div>
     
     </>)}
 
 const mapDispachToProps = dispach =>({
-    addInfo: (name, exp) => dispach(pokemonInfo(name, exp))
+    addInfo: (name, exp, height, weight, img) => dispach(pokemonInfo(name, exp, height, weight, img))
 })
 export default connect(null, mapDispachToProps )(PokemonCard)
